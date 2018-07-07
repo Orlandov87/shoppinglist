@@ -60,6 +60,8 @@ const mainMenuTemplate = [
         submenu:[
             {
                 label: 'Add Item',
+                accelerator: process.platform == 'darwin' ? 'Command+A' :
+                'Ctrl+A',
                 click(){
                     createAddWindow();
                 }
@@ -82,7 +84,8 @@ const mainMenuTemplate = [
     }
 ];
 
-// If MacOS, add empty object to menu 
+// If MacOS, add empty object to menu
+// method unshift adds to the front of the list
 if(process.platform == 'darwin') {
     mainMenuTemplate.unshift({});
 }
@@ -103,6 +106,6 @@ if(process.env.NODE_ENV !== 'production') {
             {
                 role: 'reload'
             }
-        ]     
+        ]
     });
 }
